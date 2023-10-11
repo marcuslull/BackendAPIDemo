@@ -4,6 +4,8 @@ package com.example.d288pa.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 import java.util.Set;
@@ -34,9 +36,11 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
+    @CreationTimestamp
     @Column(name = "create_date")
     private Date createDate;
 
+    @UpdateTimestamp
     @Column(name = "last_update")
     private Date lastUpdate;
 
@@ -44,6 +48,6 @@ public class Customer {
     @JoinColumn(name = "division_id")
     private Division division;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private Set<Cart> carts;
 }
