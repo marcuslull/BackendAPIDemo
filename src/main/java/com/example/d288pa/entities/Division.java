@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -21,20 +20,24 @@ public class Division {
     private Long id;
 
     @Column(name = "division")
-    private String divisionName;
+    private String division_name;
 
     @CreationTimestamp
     @Column(name = "create_date")
-    private Date createDate;
+    private Date create_date;
 
     @UpdateTimestamp
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Date last_update;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id", nullable = false, insertable = false, updatable = false)
     private Country country;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
-    private Set<Customer> customers;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
+//    private Set<Customer> customers;
+
+    @Column(name = "country_id")
+    private Long country_id;
+
 }

@@ -25,27 +25,27 @@ public class Cart {
     private String orderTrackingNumber;
 
     @Column(name = "package_price")
-    private BigDecimal packagePrice;
+    private BigDecimal package_price;
 
     @Column(name = "party_size")
-    private int partySize;
+    private int party_size;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private StatusType statusType;
+    private StatusType status;
 
     @CreationTimestamp
     @Column(name = "create_date")
-    private Date createDate;
+    private Date create_date;
 
     @UpdateTimestamp
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Date last_update;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
-    private Set<CartItem> cartItems;
+    private Set<CartItem> cartItem;
 }

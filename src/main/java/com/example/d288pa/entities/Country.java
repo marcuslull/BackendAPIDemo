@@ -21,15 +21,15 @@ public class Country {
     private Long id;
 
     @Column(name = "country")
-    private String countryName;
+    private String country_name;
 
     @CreationTimestamp
     @Column(name = "create_date")
-    private Date createDate;
+    private Date create_date;
 
     @UpdateTimestamp
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Date last_update;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
     private Set<Division> divisions;
