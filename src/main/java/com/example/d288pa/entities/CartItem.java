@@ -30,11 +30,11 @@ public class CartItem {
     private Date last_update;
 
     @ManyToOne
-    @JoinColumn(name = "vacation_id", nullable = false)
+    @JoinColumn(name = "vacation_id")
     private Vacation vacation;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id", nullable = false)
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @ManyToMany
