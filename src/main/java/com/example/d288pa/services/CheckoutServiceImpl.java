@@ -44,7 +44,13 @@ public class CheckoutServiceImpl implements CheckoutService{
         cart.setCustomer(customer);
 
         // persist the cart
-        cartRepository.save(cart);
+        try {
+            cartRepository.save(cart);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Cannot persist cart");
+        }
+
 
         // create and return response
         return new PurchaseResponse(uuid);

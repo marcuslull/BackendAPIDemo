@@ -25,10 +25,10 @@ public class Cart {
     @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
 
-    @Column(name = "package_price")
+    @Column(name = "package_price", nullable = false)
     private BigDecimal package_price;
 
-    @Column(name = "party_size")
+    @Column(name = "party_size", nullable = false)
     private int party_size;
 
     @Enumerated(EnumType.STRING)
@@ -44,7 +44,7 @@ public class Cart {
     private Date last_update;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
