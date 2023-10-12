@@ -1,5 +1,6 @@
 package com.example.d288pa.services;
 
+import com.example.d288pa.dao.CartRepository;
 import com.example.d288pa.dao.CustomerRepository;
 import com.example.d288pa.dto.PurchaseData;
 import com.example.d288pa.dto.PurchaseResponse;
@@ -15,10 +16,10 @@ import java.util.UUID;
 @Service
 public class CheckoutServiceImpl implements CheckoutService{
 
-    private final CustomerRepository customerRepository;
+    private final CartRepository cartRepository;
 
-    public CheckoutServiceImpl(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CheckoutServiceImpl(CartRepository cartRepository) {
+        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -39,11 +40,11 @@ public class CheckoutServiceImpl implements CheckoutService{
         // add the cartItems to the cart
         cartItems.forEach(cartItem -> cart.getCartItem().add(cartItem));
 
-        // add the cart to the customer
-        customer.getCarts().add(cart);
+        // add the customer to the cart
+        cart.setCustomer(customer);
 
-        // persist the customer
-        customerRepository.save(customer);
+        // persist the cart
+        cartRepository.save(cart);
 
         // create and return response
         return new PurchaseResponse(uuid);
