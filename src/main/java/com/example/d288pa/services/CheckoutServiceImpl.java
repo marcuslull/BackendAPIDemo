@@ -1,7 +1,6 @@
 package com.example.d288pa.services;
 
 import com.example.d288pa.dao.CartRepository;
-import com.example.d288pa.dao.CustomerRepository;
 import com.example.d288pa.dto.PurchaseData;
 import com.example.d288pa.dto.PurchaseResponse;
 import com.example.d288pa.entities.Cart;
@@ -54,7 +53,6 @@ public class CheckoutServiceImpl implements CheckoutService{
         catch (Exception e) {
             throw new RuntimeException("Cannot persist cart");
         }
-
 
         // create and return response
         return new PurchaseResponse(uuid);
