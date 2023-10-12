@@ -12,5 +12,6 @@ public class PurchaseResponse {
     private String orderTrackingNumber;
 
     public PurchaseResponse(String uuid) {
+        this.orderTrackingNumber = uuid;
     }
 }
