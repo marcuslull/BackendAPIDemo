@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -49,5 +50,5 @@ public class Customer {
     private Division division;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    private Set<Cart> carts;
+    private Set<Cart> carts = new HashSet<>();
 }

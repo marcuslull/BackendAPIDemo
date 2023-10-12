@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -46,5 +47,5 @@ public class Excursion {
     @JoinTable(name = "excursion_cartitem",
             joinColumns = @JoinColumn(name = "excursion_id"),
             inverseJoinColumns = @JoinColumn(name = "cart_item_id"))
-    private Set<CartItem> cartItems;
+    private Set<CartItem> cartItems = new HashSet<>();
 }

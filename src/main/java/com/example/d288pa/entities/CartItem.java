@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -40,5 +41,5 @@ public class CartItem {
     @JoinTable(name = "excursion_cartitem",
             joinColumns = @JoinColumn(name = "cart_item_id"),
             inverseJoinColumns = @JoinColumn(name = "excursion_id"))
-    private Set<Excursion> excursions;
+    private Set<Excursion> excursions = new HashSet<>();
 }
