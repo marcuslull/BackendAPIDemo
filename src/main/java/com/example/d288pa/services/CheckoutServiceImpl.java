@@ -7,6 +7,7 @@ import com.example.d288pa.dto.PurchaseResponse;
 import com.example.d288pa.entities.Cart;
 import com.example.d288pa.entities.CartItem;
 import com.example.d288pa.entities.Customer;
+import com.example.d288pa.entities.StatusType;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,9 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         // add the customer to the cart
         cart.setCustomer(customer);
+
+        // update the status
+        cart.setStatus(StatusType.ordered);
 
         // persist the cart
         try {
